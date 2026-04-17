@@ -58,147 +58,251 @@
     </div>
   </div>
 
-  <!-- AFSPRAAK SECTIE -->
-  <section class="appointment-section section-pad">
+  <!-- WIZARD SECTIE -->
+  <section class="wizard-section section-pad">
     <div class="container">
-      <div class="appointment-grid">
 
-        <!-- FORMULIER -->
-        <div>
-          <p class="tag" data-en="Online Reservation">Online Reservering</p>
-          <h2 class="section-title" style="font-size:clamp(36px,5vw,60px);" data-en="Reserve <span>Your Spot</span>">Reserveer <span>Uw Plek</span></h2>
-          <div class="divider"></div>
-          <p class="section-desc" style="margin-bottom:40px;" data-en="Fill in the form and we will contact you as soon as possible, or send us a WhatsApp message directly.">
-            Vul het formulier in en we nemen zo snel mogelijk contact op, of stuur ons direct een WhatsApp bericht.
-          </p>
+      <!-- PROGRESS BAR -->
+      <div class="wizard-progress">
+        <div class="wizard-step-indicator active" data-step="1">
+          <div class="wizard-step-circle">1</div>
+          <div class="wizard-step-label" data-en="Service">Dienst</div>
+        </div>
+        <div class="wizard-step-line"></div>
+        <div class="wizard-step-indicator" data-step="2">
+          <div class="wizard-step-circle">2</div>
+          <div class="wizard-step-label" data-en="Date">Datum</div>
+        </div>
+        <div class="wizard-step-line"></div>
+        <div class="wizard-step-indicator" data-step="3">
+          <div class="wizard-step-circle">3</div>
+          <div class="wizard-step-label" data-en="Time">Tijd</div>
+        </div>
+        <div class="wizard-step-line"></div>
+        <div class="wizard-step-indicator" data-step="4">
+          <div class="wizard-step-circle">4</div>
+          <div class="wizard-step-label" data-en="Details">Gegevens</div>
+        </div>
+        <div class="wizard-step-line"></div>
+        <div class="wizard-step-indicator" data-step="5">
+          <div class="wizard-step-circle">5</div>
+          <div class="wizard-step-label" data-en="Confirm">Bevestig</div>
+        </div>
+      </div>
 
-          <div class="form-success" data-en="✓ Your appointment request has been received! We will call you as soon as possible.">
-            ✓ Uw afspraakverzoek is ontvangen! We bellen u zo snel mogelijk.
-          </div>
+      <!-- WIZARD BODY -->
+      <div class="wizard-body">
 
-          <form id="appointment-form" class="appointment-form">
+        <!-- STEP 1: SERVICE -->
+        <div class="wizard-step active" data-step="1">
+          <h2 class="wizard-step-title" data-en="Choose your service">Kies uw dienst</h2>
+          <p class="wizard-step-desc" data-en="Select the service you would like to book.">Selecteer de dienst die u wilt boeken.</p>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="ad" data-en="Your Name">Uw Naam</label>
-                <input type="text" id="ad" name="ad" placeholder="Voornaam Achternaam" required>
+          <div class="service-grid">
+            <button type="button" class="service-card" data-service="haarknippen" data-name-nl="Haarknippen" data-name-en="Haircut" data-price="25" data-duration="30">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
               </div>
-              <div class="form-group">
-                <label for="telefon" data-en="Phone">Telefoon</label>
-                <input type="tel" id="telefon" name="telefon" placeholder="06XX XXX XX XX" required>
+              <div class="service-card-name" data-en="Haircut">Haarknippen</div>
+              <div class="service-card-meta">
+                <span class="service-card-duration">30 min</span>
+                <span class="service-card-price">€25</span>
               </div>
-            </div>
-
-            <div class="form-group">
-              <label for="hizmet" data-en="Choose a Service">Kies een Dienst</label>
-              <select id="hizmet" name="hizmet" required>
-                <option value="" disabled selected data-en="— Choose a service —">— Kies een dienst —</option>
-                <option value="haarknippen" data-en="Haircut">Haarknippen</option>
-                <option value="baardverzorging" data-en="Beard Care">Baardverzorging</option>
-                <option value="haar-baard-combo" data-en="Hair + Beard Combo">Haar + Baard Combo</option>
-                <option value="klassiek-scheren" data-en="Classic Straight Razor Shave">Klassiek Scheermes Scheren</option>
-                <option value="kinderknippen" data-en="Children's Haircut">Kinderknippen</option>
-                <option value="haarverf" data-en="Hair Coloring">Haarverf</option>
-                <option value="anders" data-en="Other">Anders</option>
-              </select>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="tarih" data-en="Date">Datum</label>
-                <input type="date" id="tarih" name="tarih" required>
-              </div>
-              <div class="form-group">
-                <label for="saat" data-en="Time Preference">Tijdvoorkeur</label>
-                <select id="saat" name="saat">
-                  <option value="" disabled selected data-en="— Choose a time —">— Kies een tijd —</option>
-                  <option>09:00</option><option>09:30</option><option>10:00</option>
-                  <option>10:30</option><option>11:00</option><option>11:30</option>
-                  <option>12:00</option><option>13:00</option><option>13:30</option>
-                  <option>14:00</option><option>14:30</option><option>15:00</option>
-                  <option>15:30</option><option>16:00</option><option>16:30</option>
-                  <option>17:00</option><option>17:30</option><option>18:00</option>
-                  <option>18:30</option><option>19:00</option><option>19:30</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="not" data-en="Note (optional)">Opmerking (optioneel)</label>
-              <textarea id="not" name="not" placeholder="Heeft u speciale wensen? Laat het ons weten..."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:18px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              <span data-en="Request Appointment">Afspraak Aanvragen</span>
             </button>
 
-            <p class="form-note" data-en="* Your appointment will be confirmed via SMS or WhatsApp.">
-              * Uw afspraak wordt bevestigd via SMS of WhatsApp.
-            </p>
+            <button type="button" class="service-card" data-service="baardverzorging" data-name-nl="Baardverzorging" data-name-en="Beard Care" data-price="15" data-duration="20">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8c0-4 3-6 8-6s8 2 8 6v4c0 5-4 10-8 10S4 17 4 12V8z"/><line x1="9" y1="10" x2="9" y2="11"/><line x1="15" y1="10" x2="15" y2="11"/></svg>
+              </div>
+              <div class="service-card-name" data-en="Beard Care">Baardverzorging</div>
+              <div class="service-card-meta">
+                <span class="service-card-duration">20 min</span>
+                <span class="service-card-price">€15</span>
+              </div>
+            </button>
 
-          </form>
+            <button type="button" class="service-card" data-service="combo" data-name-nl="Haar + Baard Combo" data-name-en="Hair + Beard Combo" data-price="35" data-duration="45">
+              <div class="service-card-badge" data-en="Popular">Populair</div>
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 6.5L21 9l-5 5 1.5 7L12 17.5 6.5 21 8 14l-5-5 6.5-.5L12 2z"/></svg>
+              </div>
+              <div class="service-card-name" data-en="Hair + Beard Combo">Haar + Baard</div>
+              <div class="service-card-meta">
+                <span class="service-card-duration">45 min</span>
+                <span class="service-card-price">€35</span>
+              </div>
+            </button>
+
+            <button type="button" class="service-card" data-service="scheren" data-name-nl="Klassiek Scheren" data-name-en="Classic Shave" data-price="30" data-duration="40">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2l8 8-12 12H2v-8L14 2z"/></svg>
+              </div>
+              <div class="service-card-name" data-en="Classic Shave">Klassiek Scheren</div>
+              <div class="service-card-meta">
+                <span class="service-card-duration">40 min</span>
+                <span class="service-card-price">€30</span>
+              </div>
+            </button>
+
+            <button type="button" class="service-card" data-service="kinderknippen" data-name-nl="Kinderknippen" data-name-en="Children's Haircut" data-price="18" data-duration="25">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4 4-7 8-7s8 3 8 7"/></svg>
+              </div>
+              <div class="service-card-name" data-en="Children's Haircut">Kinderknippen</div>
+              <div class="service-card-meta">
+                <span class="service-card-duration">25 min</span>
+                <span class="service-card-price">€18</span>
+              </div>
+            </button>
+
+            <button type="button" class="service-card" data-service="haarverf" data-name-nl="Haarverf" data-name-en="Hair Coloring" data-price="60" data-duration="90">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 5 10 5 14a7 7 0 0014 0c0-4-3-8-7-12z"/></svg>
+              </div>
+              <div class="service-card-name" data-en="Hair Coloring">Haarverf</div>
+              <div class="service-card-meta">
+                <span class="service-card-duration">90 min</span>
+                <span class="service-card-price">€60</span>
+              </div>
+            </button>
+          </div>
         </div>
 
-        <!-- CONTACTINFO -->
-        <div class="contact-info">
+        <!-- STEP 2: DATE -->
+        <div class="wizard-step" data-step="2">
+          <h2 class="wizard-step-title" data-en="Pick a date">Kies een datum</h2>
+          <p class="wizard-step-desc" data-en="Select your preferred day for the appointment.">Selecteer uw voorkeursdag voor de afspraak.</p>
 
-          <div>
-            <p class="tag" data-en="Contact">Contact</p>
-            <h3 style="font-family:var(--font-heading);font-size:40px;letter-spacing:2px;line-height:1;margin-bottom:32px;" data-en="Get in <span style='color:var(--accent-color)'>Touch</span>">
-              Neem <span style="color:var(--accent-color)">Contact</span> Op
-            </h3>
+          <div class="calendar">
+            <div class="calendar-header">
+              <button type="button" class="calendar-nav" id="cal-prev" aria-label="Previous">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <div class="calendar-month-label" id="cal-month"></div>
+              <button type="button" class="calendar-nav" id="cal-next" aria-label="Next">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <div class="calendar-weekdays">
+              <span data-en="Mo">Ma</span>
+              <span data-en="Tu">Di</span>
+              <span data-en="We">Wo</span>
+              <span data-en="Th">Do</span>
+              <span data-en="Fr">Vr</span>
+              <span data-en="Sa">Za</span>
+              <span data-en="Su">Zo</span>
+            </div>
+            <div class="calendar-grid" id="cal-grid"></div>
           </div>
-
-          <!-- ADRES -->
-          <div class="contact-card">
-            <div class="contact-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <div class="contact-card-title" data-en="Address">Adres</div>
-              <div class="contact-card-value">[ADRES]</div>
-              <div class="contact-card-sub">[SEHIR]</div>
-            </div>
-          </div>
-
-          <!-- TELEFOON -->
-          <a href="tel:[TELEFON]" class="contact-card" style="display:flex;">
-            <div class="contact-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            </div>
-            <div>
-              <div class="contact-card-title" data-en="Phone">Telefoon</div>
-              <div class="contact-card-value">[TELEFON]</div>
-              <div class="contact-card-sub" data-en="Call directly">Direct bellen</div>
-            </div>
-          </a>
-
-          <!-- WHATSAPP -->
-          <a href="https://wa.me/[WHATSAPP_NO]" target="_blank" class="contact-card" style="display:flex;">
-            <div class="contact-icon" style="background:#25d366;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            </div>
-            <div>
-              <div class="contact-card-title">WhatsApp</div>
-              <div class="contact-card-value" data-en="Send Message">Stuur Bericht</div>
-              <div class="contact-card-sub" data-en="Quick response">Snelle reactie</div>
-            </div>
-          </a>
-
-          <!-- OPENINGSTIJDEN -->
-          <div class="contact-card">
-            <div class="contact-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div>
-              <div class="contact-card-title" data-en="Opening Hours">Openingstijden</div>
-              <div class="contact-card-value" style="font-size:15px;" data-en="Mon – Sat: 09:00 – 20:00">Ma – Za: 09:00 – 20:00</div>
-              <div class="contact-card-sub" data-en="Sun: 10:00 – 18:00">Zo: 10:00 – 18:00</div>
-            </div>
-          </div>
-
         </div>
+
+        <!-- STEP 3: TIME -->
+        <div class="wizard-step" data-step="3">
+          <h2 class="wizard-step-title" data-en="Pick a time">Kies een tijd</h2>
+          <p class="wizard-step-desc" id="time-step-desc" data-en="Available time slots for the selected day.">Beschikbare tijden voor de geselecteerde dag.</p>
+
+          <div class="time-section">
+            <div class="time-section-title" data-en="Morning">Ochtend</div>
+            <div class="time-grid" id="time-morning"></div>
+          </div>
+          <div class="time-section">
+            <div class="time-section-title" data-en="Afternoon">Middag</div>
+            <div class="time-grid" id="time-afternoon"></div>
+          </div>
+          <div class="time-section">
+            <div class="time-section-title" data-en="Evening">Avond</div>
+            <div class="time-grid" id="time-evening"></div>
+          </div>
+        </div>
+
+        <!-- STEP 4: DETAILS -->
+        <div class="wizard-step" data-step="4">
+          <h2 class="wizard-step-title" data-en="Your details">Uw gegevens</h2>
+          <p class="wizard-step-desc" data-en="Please fill in your contact information.">Vul uw contactgegevens in.</p>
+
+          <div class="wizard-form">
+            <div class="form-group">
+              <label for="w-name" data-en="Full Name">Volledige Naam</label>
+              <input type="text" id="w-name" placeholder="Voornaam Achternaam" required>
+            </div>
+            <div class="form-group">
+              <label for="w-phone" data-en="Phone Number">Telefoonnummer</label>
+              <input type="tel" id="w-phone" placeholder="06XX XXX XX XX" required>
+            </div>
+            <div class="form-group">
+              <label for="w-email" data-en="Email (optional)">E-mail (optioneel)</label>
+              <input type="email" id="w-email" placeholder="naam@voorbeeld.nl">
+            </div>
+            <div class="form-group">
+              <label for="w-note" data-en="Note (optional)">Opmerking (optioneel)</label>
+              <textarea id="w-note" placeholder="Heeft u speciale wensen?"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: CONFIRM -->
+        <div class="wizard-step" data-step="5">
+          <h2 class="wizard-step-title" data-en="Review your booking">Controleer uw boeking</h2>
+          <p class="wizard-step-desc" data-en="Please confirm the details below.">Bevestig de onderstaande gegevens.</p>
+
+          <div class="summary-card">
+            <div class="summary-row">
+              <div class="summary-label" data-en="Service">Dienst</div>
+              <div class="summary-value" id="sum-service">—</div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label" data-en="Date">Datum</div>
+              <div class="summary-value" id="sum-date">—</div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label" data-en="Time">Tijd</div>
+              <div class="summary-value" id="sum-time">—</div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label" data-en="Duration">Duur</div>
+              <div class="summary-value" id="sum-duration">—</div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label" data-en="Name">Naam</div>
+              <div class="summary-value" id="sum-name">—</div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label" data-en="Phone">Telefoon</div>
+              <div class="summary-value" id="sum-phone">—</div>
+            </div>
+            <div class="summary-row summary-total">
+              <div class="summary-label" data-en="Total">Totaal</div>
+              <div class="summary-value" id="sum-price">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="wizard-success" id="wizard-success">
+          <div class="wizard-success-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2 class="wizard-step-title" data-en="Appointment confirmed!">Afspraak bevestigd!</h2>
+          <p class="wizard-step-desc" data-en="We have received your booking. We will contact you shortly to confirm.">Wij hebben uw boeking ontvangen. We nemen binnenkort contact met u op ter bevestiging.</p>
+          <a href="index.html" class="btn btn-primary" style="margin-top:24px;"><span data-en="Back to Home">Terug naar Home</span></a>
+        </div>
+
+        <!-- WIZARD NAV -->
+        <div class="wizard-nav" id="wizard-nav">
+          <button type="button" class="btn wizard-btn-prev" id="btn-prev" disabled>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            <span data-en="Previous">Vorige</span>
+          </button>
+          <button type="button" class="btn btn-primary wizard-btn-next" id="btn-next" disabled>
+            <span data-en="Next">Volgende</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button type="button" class="btn btn-primary wizard-btn-confirm" id="btn-confirm" style="display:none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-en="Confirm Appointment">Afspraak Bevestigen</span>
+          </button>
+        </div>
+
       </div>
     </div>
   </section>
