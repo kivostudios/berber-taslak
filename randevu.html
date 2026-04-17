@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afspraak Maken — [BERBER_ADI] Barbershop</title>
+  <meta name="description" content="[BERBER_ADI] Barbershop — online afspraak maken.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVIGATIE -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-placeholder">[L]</div>
+      <div class="nav-brand">
+        <span class="nav-brand-name">[BERBER_ADI]</span>
+        <span class="nav-brand-sub">Barbershop</span>
+      </div>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="index.html" data-en="Home">Home</a></li>
+      <li><a href="hizmetler.html" data-en="Our Services">Onze Diensten</a></li>
+      <li><a href="galeri.html" data-en="Gallery">Galerij</a></li>
+      <li><a href="randevu.html" class="active" data-en="Contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="nl">NL</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <a href="tel:[TELEFON]" class="nav-btn-call">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span data-en="Call Now">Bel Nu</span>
+      </a>
+      <a href="randevu.html" class="nav-btn-book"><span data-en="Book Now">Boek Nu</span></a>
+    </div>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="index.html" data-en="Home">Home</a>
+    <a href="hizmetler.html" data-en="Our Services">Onze Diensten</a>
+    <a href="galeri.html" data-en="Gallery">Galerij</a>
+    <a href="randevu.html" data-en="Contact">Contact</a>
+    <a href="tel:[TELEFON]">[TELEFON]</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-header-title">Afspraak <span>Maken</span></h1>
+      <div class="breadcrumb">
+        <a href="index.html" data-en="Home">Home</a>
+        <span>/</span>
+        <span data-en="Book Appointment">Afspraak Maken</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFSPRAAK SECTIE -->
+  <section class="appointment-section section-pad">
+    <div class="container">
+      <div class="appointment-grid">
+
+        <!-- FORMULIER -->
+        <div>
+          <p class="tag" data-en="Online Reservation">Online Reservering</p>
+          <h2 class="section-title" style="font-size:clamp(36px,5vw,60px);" data-en="Reserve <span>Your Spot</span>">Reserveer <span>Uw Plek</span></h2>
+          <div class="divider"></div>
+          <p class="section-desc" style="margin-bottom:40px;" data-en="Fill in the form and we will contact you as soon as possible, or send us a WhatsApp message directly.">
+            Vul het formulier in en we nemen zo snel mogelijk contact op, of stuur ons direct een WhatsApp bericht.
+          </p>
+
+          <div class="form-success" data-en="✓ Your appointment request has been received! We will call you as soon as possible.">
+            ✓ Uw afspraakverzoek is ontvangen! We bellen u zo snel mogelijk.
+          </div>
+
+          <form id="appointment-form" class="appointment-form">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ad" data-en="Your Name">Uw Naam</label>
+                <input type="text" id="ad" name="ad" placeholder="Voornaam Achternaam" required>
+              </div>
+              <div class="form-group">
+                <label for="telefon" data-en="Phone">Telefoon</label>
+                <input type="tel" id="telefon" name="telefon" placeholder="06XX XXX XX XX" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="hizmet" data-en="Choose a Service">Kies een Dienst</label>
+              <select id="hizmet" name="hizmet" required>
+                <option value="" disabled selected data-en="— Choose a service —">— Kies een dienst —</option>
+                <option value="haarknippen" data-en="Haircut">Haarknippen</option>
+                <option value="baardverzorging" data-en="Beard Care">Baardverzorging</option>
+                <option value="haar-baard-combo" data-en="Hair + Beard Combo">Haar + Baard Combo</option>
+                <option value="klassiek-scheren" data-en="Classic Straight Razor Shave">Klassiek Scheermes Scheren</option>
+                <option value="kinderknippen" data-en="Children's Haircut">Kinderknippen</option>
+                <option value="haarverf" data-en="Hair Coloring">Haarverf</option>
+                <option value="anders" data-en="Other">Anders</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="tarih" data-en="Date">Datum</label>
+                <input type="date" id="tarih" name="tarih" required>
+              </div>
+              <div class="form-group">
+                <label for="saat" data-en="Time Preference">Tijdvoorkeur</label>
+                <select id="saat" name="saat">
+                  <option value="" disabled selected data-en="— Choose a time —">— Kies een tijd —</option>
+                  <option>09:00</option><option>09:30</option><option>10:00</option>
+                  <option>10:30</option><option>11:00</option><option>11:30</option>
+                  <option>12:00</option><option>13:00</option><option>13:30</option>
+                  <option>14:00</option><option>14:30</option><option>15:00</option>
+                  <option>15:30</option><option>16:00</option><option>16:30</option>
+                  <option>17:00</option><option>17:30</option><option>18:00</option>
+                  <option>18:30</option><option>19:00</option><option>19:30</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="not" data-en="Note (optional)">Opmerking (optioneel)</label>
+              <textarea id="not" name="not" placeholder="Heeft u speciale wensen? Laat het ons weten..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:18px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span data-en="Request Appointment">Afspraak Aanvragen</span>
+            </button>
+
+            <p class="form-note" data-en="* Your appointment will be confirmed via SMS or WhatsApp.">
+              * Uw afspraak wordt bevestigd via SMS of WhatsApp.
+            </p>
+
+          </form>
+        </div>
+
+        <!-- CONTACTINFO -->
+        <div class="contact-info">
+
+          <div>
+            <p class="tag" data-en="Contact">Contact</p>
+            <h3 style="font-family:var(--font-heading);font-size:40px;letter-spacing:2px;line-height:1;margin-bottom:32px;" data-en="Get in <span style='color:var(--accent-color)'>Touch</span>">
+              Neem <span style="color:var(--accent-color)">Contact</span> Op
+            </h3>
+          </div>
+
+          <!-- ADRES -->
+          <div class="contact-card">
+            <div class="contact-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-title" data-en="Address">Adres</div>
+              <div class="contact-card-value">[ADRES]</div>
+              <div class="contact-card-sub">[SEHIR]</div>
+            </div>
+          </div>
+
+          <!-- TELEFOON -->
+          <a href="tel:[TELEFON]" class="contact-card" style="display:flex;">
+            <div class="contact-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-title" data-en="Phone">Telefoon</div>
+              <div class="contact-card-value">[TELEFON]</div>
+              <div class="contact-card-sub" data-en="Call directly">Direct bellen</div>
+            </div>
+          </a>
+
+          <!-- WHATSAPP -->
+          <a href="https://wa.me/[WHATSAPP_NO]" target="_blank" class="contact-card" style="display:flex;">
+            <div class="contact-icon" style="background:#25d366;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-title">WhatsApp</div>
+              <div class="contact-card-value" data-en="Send Message">Stuur Bericht</div>
+              <div class="contact-card-sub" data-en="Quick response">Snelle reactie</div>
+            </div>
+          </a>
+
+          <!-- OPENINGSTIJDEN -->
+          <div class="contact-card">
+            <div class="contact-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-title" data-en="Opening Hours">Openingstijden</div>
+              <div class="contact-card-value" style="font-size:15px;" data-en="Mon – Sat: 09:00 – 20:00">Ma – Za: 09:00 – 20:00</div>
+              <div class="contact-card-sub" data-en="Sun: 10:00 – 18:00">Zo: 10:00 – 18:00</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="nav-logo-placeholder" style="width:52px;height:52px;font-size:24px;">[L]</div>
+          <div class="footer-brand-name">[BERBER_ADI]</div>
+          <p class="footer-brand-desc" data-en="Professional hair and beard care. [SEHIR].">Professionele haar- en baardverzorging. [SEHIR].</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title" data-en="Pages">Pagina's</div>
+          <a href="index.html" data-en="Home">Home</a>
+          <a href="hizmetler.html" data-en="Services">Onze Diensten</a>
+          <a href="galeri.html" data-en="Gallery">Galerij</a>
+          <a href="randevu.html" data-en="Book Now">Boek Nu</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title" data-en="Services">Diensten</div>
+          <a href="hizmetler.html" data-en="Haircut">Haarknippen</a>
+          <a href="hizmetler.html" data-en="Beard Care">Baardverzorging</a>
+          <a href="hizmetler.html" data-en="Children's Haircut">Kinderknippen</a>
+          <a href="hizmetler.html" data-en="Classic Shave">Klassiek Scheren</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title" data-en="Contact">Contact</div>
+          <a href="#">[ADRES]</a>
+          <a href="tel:[TELEFON]">[TELEFON]</a>
+          <a href="https://wa.me/[WHATSAPP_NO]" target="_blank">WhatsApp</a>
+          <p style="font-size:13px;color:var(--text-secondary);margin-top:12px;">
+            <span data-en="Mon–Sat: 09:00 – 20:00">Ma–Za: 09:00 – 20:00</span><br>
+            <span data-en="Sun: 10:00 – 18:00">Zo: 10:00 – 18:00</span>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 [BERBER_ADI] Barbershop. <span data-en="All rights reserved.">Alle rechten voorbehouden.</span></p>
+        <p>[SEHIR]</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/[WHATSAPP_NO]" class="whatsapp-float" target="_blank" title="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
