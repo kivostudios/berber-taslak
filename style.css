@@ -1245,14 +1245,14 @@ ul { list-style: none; }
   margin-bottom: 20px;
 }
 
-/* ---- SERVICE LIST ---- */
-.service-grid {
+/* ---- BOOKING SERVICE LIST ---- */
+.booking-grid {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.service-card {
+.booking-card {
   position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -1266,16 +1266,18 @@ ul { list-style: none; }
   gap: 14px;
   text-align: left;
   width: 100%;
+  aspect-ratio: auto;
+  height: auto;
 }
 
-.service-card:hover { border-color: var(--accent-color); }
+.booking-card:hover { border-color: var(--accent-color); }
 
-.service-card.selected {
+.booking-card.selected {
   border-color: var(--accent-color);
   background: rgba(245, 197, 24, 0.05);
 }
 
-.service-card-icon {
+.booking-card-icon {
   width: 36px;
   height: 36px;
   flex-shrink: 0;
@@ -1287,20 +1289,20 @@ ul { list-style: none; }
   transition: all 0.2s;
 }
 
-.service-card-icon svg { width: 18px; height: 18px; }
+.booking-card-icon svg { width: 18px; height: 18px; }
 
-.service-card.selected .service-card-icon {
+.booking-card.selected .booking-card-icon {
   background: var(--accent-color);
   color: #000;
 }
 
-.service-card-name {
+.booking-card-name {
   font-weight: 600;
   font-size: 14px;
   flex: 1;
 }
 
-.service-card-meta {
+.booking-card-meta {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1308,10 +1310,10 @@ ul { list-style: none; }
   margin-left: auto;
 }
 
-.service-card-duration { color: var(--text-secondary); }
-.service-card-price { color: var(--accent-color); font-weight: 700; }
+.booking-card-duration { color: var(--text-secondary); }
+.booking-card-price { color: var(--accent-color); font-weight: 700; }
 
-.service-card-badge {
+.booking-card-badge {
   position: absolute;
   top: 50%;
   right: -1px;
@@ -1550,11 +1552,11 @@ ul { list-style: none; }
   .wizard-step-label { display: none; }
   .wizard-step-line { margin-bottom: 0; }
   .wizard-nav { padding: 12px 16px; }
-  .service-card-badge { display: none; }
+  .booking-card-badge { display: none; }
 }
 
 @media (max-width: 480px) {
   .wizard-step-circle { width: 28px; height: 28px; font-size: 12px; }
   .time-grid { grid-template-columns: repeat(4, 1fr); }
-  .service-card-meta { flex-direction: column; gap: 2px; align-items: flex-end; }
+  .booking-card-meta { flex-direction: column; gap: 2px; align-items: flex-end; }
 }

@@ -100,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const successBox = document.getElementById('wizard-success');
 
     // ---- STEP 1: SERVICE ----
-    document.querySelectorAll('.service-card').forEach(card => {
+    document.querySelectorAll('.booking-card').forEach(card => {
       card.addEventListener('click', () => {
-        document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+        document.querySelectorAll('.booking-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
         state.service = {
           id: card.dataset.service,
