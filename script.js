@@ -313,11 +313,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     btnConfirm.addEventListener('click', () => {
-      // Hide all steps and nav, show success
+      // Save booking to localStorage
+      const bookings = JSON.parse(localStorage.getItem('barber_bookings') || '[]');
+      const d = state.date;
+      const dateKey = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      bookings.push({
+        id: Date.now(),
+        name: state.name,
+        phone: state.phone,
+        email: state.email || '',
+        note: state.note || '',
+        service: state.service.nameNl,
+        serviceEn: state.service.nameEn,
+        price: state.service.price,
+        duration: state.service.duration,
+        date: dateKey,
+        time: state.time,
+        status: 'pending',
+        createdAt: Date.now()
+      });
+      localStorage.setItem('barber_bookings', JSON.stringify(bookings));
+
+      // Show success
       steps.forEach(s => s.classList.remove('active'));
       wizardNav.style.display = 'none';
       successBox.classList.add('active');
-      // Mark all indicators completed
       indicators.forEach(ind => {
         ind.classList.remove('active');
         ind.classList.add('completed');

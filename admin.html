@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — [BERBER_ADI] Barbershop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+
+  <!-- LOGIN SCREEN -->
+  <div class="admin-login" id="admin-login">
+    <div class="admin-login-box">
+      <div class="admin-login-logo">[L]</div>
+      <h1 class="admin-login-title">[BERBER_ADI]</h1>
+      <p class="admin-login-sub">Admin Paneli</p>
+      <div class="admin-login-error" id="login-error">Onjuist wachtwoord</div>
+      <form id="login-form" class="admin-login-form">
+        <div class="form-group">
+          <label>Wachtwoord</label>
+          <input type="password" id="login-password" placeholder="••••••••" autofocus>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Inloggen
+        </button>
+      </form>
+      <a href="index.html" class="admin-back-link">← Terug naar website</a>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+  <div class="admin-dashboard" id="admin-dashboard" style="display:none;">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-logo">
+        <div class="admin-sidebar-icon">[L]</div>
+        <div>
+          <div class="admin-sidebar-brand">[BERBER_ADI]</div>
+          <div class="admin-sidebar-role">Admin</div>
+        </div>
+      </div>
+      <nav class="admin-nav">
+        <a href="#" class="admin-nav-item active" data-view="dashboard">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="#" class="admin-nav-item" data-view="bookings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Reserveringen
+        </a>
+        <a href="#" class="admin-nav-item" data-view="today">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Vandaag
+        </a>
+      </nav>
+      <div class="admin-sidebar-footer">
+        <a href="index.html" class="admin-nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Website
+        </a>
+        <button class="admin-nav-item admin-logout" id="btn-logout">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Uitloggen
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+
+      <!-- DASHBOARD VIEW -->
+      <div class="admin-view active" id="view-dashboard">
+        <div class="admin-topbar">
+          <h2 class="admin-page-title">Dashboard</h2>
+          <div class="admin-date" id="admin-today-date"></div>
+        </div>
+
+        <div class="admin-stats">
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon" style="background:rgba(245,197,24,0.1);color:var(--accent-color);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="admin-stat-value" id="stat-today">0</div>
+            <div class="admin-stat-label">Vandaag</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon" style="background:rgba(99,102,241,0.1);color:#6366f1;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="admin-stat-value" id="stat-total">0</div>
+            <div class="admin-stat-label">Totaal</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon" style="background:rgba(34,197,94,0.1);color:#22c55e;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="admin-stat-value" id="stat-confirmed">0</div>
+            <div class="admin-stat-label">Bevestigd</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon" style="background:rgba(234,179,8,0.1);color:#eab308;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="admin-stat-value" id="stat-pending">0</div>
+            <div class="admin-stat-label">In afwachting</div>
+          </div>
+        </div>
+
+        <!-- RECENT BOOKINGS -->
+        <div class="admin-section">
+          <div class="admin-section-header">
+            <h3 class="admin-section-title">Recente Reserveringen</h3>
+            <a href="#" class="admin-link" data-view="bookings">Bekijk alles →</a>
+          </div>
+          <div id="recent-list"></div>
+        </div>
+      </div>
+
+      <!-- BOOKINGS VIEW -->
+      <div class="admin-view" id="view-bookings">
+        <div class="admin-topbar">
+          <h2 class="admin-page-title">Alle Reserveringen</h2>
+          <div class="admin-filters">
+            <button class="admin-filter-btn active" data-filter="all">Alle</button>
+            <button class="admin-filter-btn" data-filter="pending">In afwachting</button>
+            <button class="admin-filter-btn" data-filter="confirmed">Bevestigd</button>
+            <button class="admin-filter-btn" data-filter="cancelled">Geannuleerd</button>
+          </div>
+        </div>
+        <div id="bookings-list"></div>
+      </div>
+
+      <!-- TODAY VIEW -->
+      <div class="admin-view" id="view-today">
+        <div class="admin-topbar">
+          <h2 class="admin-page-title">Vandaag</h2>
+          <div class="admin-date" id="today-full-date"></div>
+        </div>
+        <div id="today-list"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
