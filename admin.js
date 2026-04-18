@@ -5,8 +5,29 @@
 const ADMIN_PASSWORD = 'barber2025'; // Wijzig dit wachtwoord!
 const BOOKINGS_KEY = 'barber_bookings';
 const AUTH_KEY = 'barber_admin_auth';
+const LANG_KEY = 'barber_lang';
 
 const monthsNl = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+const monthsEn = ['january','february','march','april','may','june','july','august','september','october','november','december'];
+
+const i18n = {
+  nl: {
+    pending: 'In afwachting', confirmed: 'Bevestigd', cancelled: 'Geannuleerd',
+    confirm: 'Bevestig', cancel: 'Annuleer', delete: 'Verwijder',
+    noBookings: 'Nog geen reserveringen.', noFiltered: 'Geen reserveringen gevonden.',
+    noToday: 'Geen afspraken vandaag.', deleteConfirm: 'Reservering verwijderen?'
+  },
+  en: {
+    pending: 'Pending', confirmed: 'Confirmed', cancelled: 'Cancelled',
+    confirm: 'Confirm', cancel: 'Cancel', delete: 'Delete',
+    noBookings: 'No bookings yet.', noFiltered: 'No bookings found.',
+    noToday: 'No appointments today.', deleteConfirm: 'Delete this booking?'
+  }
+};
+
+let currentLang = localStorage.getItem(LANG_KEY) || 'nl';
+function t(key) { return i18n[currentLang][key]; }
+function months() { return currentLang === 'en' ? monthsEn : monthsNl; }
 
 // ---- HELPERS ----
 function getBookings() {
@@ -24,23 +45,22 @@ function todayStr() {
 
 function formatDate(dateStr) {
   const [y, m, d] = dateStr.split('-');
-  return `${parseInt(d)} ${monthsNl[parseInt(m)-1]} ${y}`;
+  return `${parseInt(d)} ${months()[parseInt(m)-1]} ${y}`;
 }
 
 function statusBadge(status) {
-  const labels = { pending: 'In afwachting', confirmed: 'Bevestigd', cancelled: 'Geannuleerd' };
-  return `<span class="booking-status ${status}">${labels[status] || status}</span>`;
+  return `<span class="booking-status ${status}">${t(status)}</span>`;
 }
 
 function actionButtons(id, status) {
   let btns = '';
   if (status !== 'confirmed') {
-    btns += `<button class="admin-action-btn confirm" onclick="updateStatus('${id}','confirmed')">Bevestig</button>`;
+    btns += `<button class="admin-action-btn confirm" onclick="updateStatus('${id}','confirmed')">${t('confirm')}</button>`;
   }
   if (status !== 'cancelled') {
-    btns += `<button class="admin-action-btn cancel" onclick="updateStatus('${id}','cancelled')">Annuleer</button>`;
+    btns += `<button class="admin-action-btn cancel" onclick="updateStatus('${id}','cancelled')">${t('cancel')}</button>`;
   }
-  btns += `<button class="admin-action-btn delete" onclick="deleteBooking('${id}')">Verwijder</button>`;
+  btns += `<button class="admin-action-btn delete" onclick="deleteBooking('${id}')">${t('delete')}</button>`;
   return btns;
 }
 
@@ -81,7 +101,7 @@ window.updateStatus = function(id, status) {
 };
 
 window.deleteBooking = function(id) {
-  if (!confirm('Reservering verwijderen?')) return;
+  if (!confirm(t('deleteConfirm'))) return;
   const bookings = getBookings().filter(b => String(b.id) !== String(id));
   saveBookings(bookings);
   renderAll();
@@ -100,9 +120,10 @@ function renderStats() {
 function renderRecent() {
   const bookings = getBookings().slice(-5).reverse();
   const el = document.getElementById('recent-list');
+  if (!el) return;
   el.innerHTML = bookings.length
     ? bookings.map(bookingRow).join('')
-    : emptyState('Nog geen reserveringen.');
+    : emptyState(t('noBookings'));
 }
 
 let currentFilter = 'all';
@@ -111,23 +132,25 @@ function renderBookings() {
   const all = getBookings().reverse();
   const filtered = currentFilter === 'all' ? all : all.filter(b => b.status === currentFilter);
   const el = document.getElementById('bookings-list');
+  if (!el) return;
   el.innerHTML = filtered.length
     ? filtered.map(bookingRow).join('')
-    : emptyState('Geen reserveringen gevonden.');
+    : emptyState(t('noFiltered'));
 }
 
 function renderToday() {
   const today = todayStr();
   const bookings = getBookings().filter(b => b.date === today).sort((a,b) => a.time.localeCompare(b.time));
   const el = document.getElementById('today-list');
+  if (!el) return;
 
   const d = new Date();
-  document.getElementById('today-full-date').textContent =
-    `${d.getDate()} ${monthsNl[d.getMonth()]} ${d.getFullYear()}`;
+  const dateEl = document.getElementById('today-full-date');
+  if (dateEl) dateEl.textContent = `${d.getDate()} ${months()[d.getMonth()]} ${d.getFullYear()}`;
 
   el.innerHTML = bookings.length
     ? bookings.map(bookingRow).join('')
-    : emptyState('Geen afspraken vandaag.');
+    : emptyState(t('noToday'));
 }
 
 function renderAll() {
@@ -152,9 +175,44 @@ function showDashboard() {
 
   const d = new Date();
   const dateEl = document.getElementById('admin-today-date');
-  if (dateEl) dateEl.textContent = `${d.getDate()} ${monthsNl[d.getMonth()]} ${d.getFullYear()}`;
+  if (dateEl) dateEl.textContent = `${d.getDate()} ${months()[d.getMonth()]} ${d.getFullYear()}`;
 
   renderAll();
+}
+
+// ---- LANGUAGE ----
+function applyStaticTranslations(lang) {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const enText = el.dataset.en;
+    const hasHtml = /<[a-z][\s\S]*>/i.test(enText);
+    if (!el.dataset.nl) {
+      el.dataset.nl = (hasHtml ? el.innerHTML : el.textContent).trim();
+    }
+    const target = lang === 'en' ? enText : el.dataset.nl;
+    if (hasHtml) el.innerHTML = target;
+    else el.textContent = target;
+  });
+  document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+    if (!el.dataset.nlPlaceholder) el.dataset.nlPlaceholder = el.placeholder;
+    el.placeholder = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.nlPlaceholder;
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem(LANG_KEY, lang);
+  document.documentElement.lang = lang;
+  applyStaticTranslations(lang);
+  // Re-render dynamic content (bookings, dates)
+  if (document.getElementById('admin-dashboard').style.display !== 'none') {
+    const d = new Date();
+    const dateEl = document.getElementById('admin-today-date');
+    if (dateEl) dateEl.textContent = `${d.getDate()} ${months()[d.getMonth()]} ${d.getFullYear()}`;
+    renderAll();
+  }
 }
 
 function checkAuth() {
@@ -163,6 +221,14 @@ function checkAuth() {
 
 // ---- INIT ----
 document.addEventListener('DOMContentLoaded', () => {
+  // Apply saved language on load
+  applyStaticTranslations(currentLang);
+
+  // Language button handlers
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+
   // Auto-login if already authenticated
   if (checkAuth()) {
     showDashboard();

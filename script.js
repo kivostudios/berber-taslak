@@ -387,13 +387,22 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem(LANG_KEY, lang);
     document.documentElement.lang = lang;
 
-    // Update all translatable elements
+    // Update text/HTML content
     document.querySelectorAll('[data-en]').forEach(el => {
+      const enText = el.dataset.en;
+      const hasHtml = /<[a-z][\s\S]*>/i.test(enText);
       if (!el.dataset.nl) {
-        // Save original NL text on first switch
-        el.dataset.nl = el.textContent.trim();
+        el.dataset.nl = (hasHtml ? el.innerHTML : el.textContent).trim();
       }
-      el.textContent = lang === 'en' ? el.dataset.en : el.dataset.nl;
+      const target = lang === 'en' ? enText : el.dataset.nl;
+      if (hasHtml) el.innerHTML = target;
+      else el.textContent = target;
+    });
+
+    // Update placeholders
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+      if (!el.dataset.nlPlaceholder) el.dataset.nlPlaceholder = el.placeholder;
+      el.placeholder = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.nlPlaceholder;
     });
 
     // Update lang button active states (all .lang-btn on page)
