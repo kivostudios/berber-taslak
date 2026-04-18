@@ -1145,14 +1145,14 @@ ul { list-style: none; }
 /* ============================================
    BOOKING WIZARD
    ============================================ */
-.wizard-section { background: var(--bg-primary); padding: 60px 0 120px; }
+.wizard-section { background: var(--bg-primary); padding: 28px 0 100px; }
 
 .wizard-progress {
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 640px;
-  margin: 0 auto 32px;
+  margin: 0 auto 20px;
   padding: 0 12px;
 }
 
