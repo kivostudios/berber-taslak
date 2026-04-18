@@ -1315,9 +1315,9 @@ ul { list-style: none; }
 
 .booking-card-badge {
   position: absolute;
-  top: 50%;
+  top: -1px;
   right: -1px;
-  transform: translateY(-50%);
+  transform: none;
   background: var(--accent-color);
   color: #000;
   font-size: 9px;
