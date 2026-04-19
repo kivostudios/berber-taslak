@@ -3,55 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Afspraak Maken — [BERBER_ADI] Barbershop</title>
+  <title>Afspraak — [BERBER_ADI] Barbershop</title>
   <meta name="description" content="[BERBER_ADI] Barbershop — online afspraak maken.">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="t-body">
 
   <!-- NAVIGATIE -->
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo">
-      <div class="nav-logo-placeholder">[L]</div>
-      <div class="nav-brand">
-        <span class="nav-brand-name">[BERBER_ADI]</span>
-        <span class="nav-brand-sub">Barbershop</span>
-      </div>
-    </a>
-    <ul class="nav-menu">
-      <li><a href="index.html" data-en="Home">Home</a></li>
-      <li><a href="hizmetler.html" data-en="Our Services">Onze Diensten</a></li>
-      <li><a href="galeri.html" data-en="Gallery">Galerij</a></li>
-      <li><a href="randevu.html" class="active" data-en="Contact">Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="nl">NL</button>
-        <span class="lang-divider">|</span>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
-      <a href="tel:[TELEFON]" class="nav-btn-call">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        <span data-en="Call Now">Bel Nu</span>
+  <nav class="t-nav">
+    <div class="t-nav-top">
+      <span class="t-nav-location" data-en="Based in [SEHIR]">[SEHIR]</span>
+      <a href="index.html" class="t-nav-logo">
+        <div class="t-logo-icon">[L]</div>
+        <span class="t-logo-name">[BERBER_ADI]</span>
       </a>
-      <a href="randevu.html" class="nav-btn-book"><span data-en="Book Now">Boek Nu</span></a>
+      <div class="t-nav-right">
+        <div class="t-lang-switcher">
+          <button class="lang-btn active" data-lang="nl">NL</button>
+          <span class="t-lang-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="t-menu-btn" id="t-menu-btn">Menu</button>
+      </div>
     </div>
-    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="t-nav-links">
+      <a href="index.html" data-en="Home">Home</a>
+      <a href="hizmetler.html" data-en="Services">Diensten</a>
+      <a href="galeri.html" data-en="Gallery">Galerij</a>
+      <a href="randevu.html" class="active" data-en="Book">Reserveer</a>
+    </div>
   </nav>
-  <div class="mobile-menu">
+
+  <!-- MOBILE MENU -->
+  <div class="t-mobile-menu" id="t-mobile-menu">
+    <button class="t-mobile-close" id="t-mobile-close">&times;</button>
     <a href="index.html" data-en="Home">Home</a>
-    <a href="hizmetler.html" data-en="Our Services">Onze Diensten</a>
+    <a href="hizmetler.html" data-en="Services">Diensten</a>
     <a href="galeri.html" data-en="Gallery">Galerij</a>
-    <a href="randevu.html" data-en="Contact">Contact</a>
+    <a href="randevu.html" data-en="Book Now">Reserveer</a>
     <a href="tel:[TELEFON]">[TELEFON]</a>
   </div>
 
-  <!-- WIZARD SECTIE -->
-  <section class="wizard-section">
-    <div class="container">
+  <!-- WIZARD -->
+  <section class="bw-section">
+    <div class="bw-container">
 
-      <!-- PROGRESS BAR -->
-      <div class="wizard-progress">
+      <!-- PROGRESS -->
+      <div class="bw-progress" id="bw-progress">
         <div class="wizard-step-indicator active" data-step="1">
           <div class="wizard-step-circle">1</div>
           <div class="wizard-step-label" data-en="Service">Dienst</div>
@@ -83,13 +81,13 @@
 
         <!-- STEP 1: SERVICE -->
         <div class="wizard-step active" data-step="1">
-          <h2 class="wizard-step-title" data-en="Choose your service">Kies uw dienst</h2>
-          <p class="wizard-step-desc" data-en="Select the service you would like to book.">Selecteer de dienst die u wilt boeken.</p>
+          <h2 class="bw-step-title" data-en="Choose your service">Kies uw dienst</h2>
+          <p class="bw-step-desc" data-en="Select the service you would like to book.">Selecteer de dienst die u wilt boeken.</p>
 
           <div class="booking-grid">
             <button type="button" class="booking-card" data-service="haarknippen" data-name-nl="Haarknippen" data-name-en="Haircut" data-price="25" data-duration="30">
               <div class="booking-card-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
               </div>
               <div class="booking-card-name" data-en="Haircut">Haarknippen</div>
               <div class="booking-card-meta">
@@ -100,7 +98,7 @@
 
             <button type="button" class="booking-card" data-service="baardverzorging" data-name-nl="Baardverzorging" data-name-en="Beard Care" data-price="15" data-duration="20">
               <div class="booking-card-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8c0-4 3-6 8-6s8 2 8 6v4c0 5-4 10-8 10S4 17 4 12V8z"/><line x1="9" y1="10" x2="9" y2="11"/><line x1="15" y1="10" x2="15" y2="11"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8c0-4 3-6 8-6s8 2 8 6v4c0 5-4 10-8 10S4 17 4 12V8z"/></svg>
               </div>
               <div class="booking-card-name" data-en="Beard Care">Baardverzorging</div>
               <div class="booking-card-meta">
@@ -112,7 +110,7 @@
             <button type="button" class="booking-card" data-service="combo" data-name-nl="Haar + Baard Combo" data-name-en="Hair + Beard Combo" data-price="35" data-duration="45">
               <div class="booking-card-badge" data-en="Popular">Populair</div>
               <div class="booking-card-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 6.5L21 9l-5 5 1.5 7L12 17.5 6.5 21 8 14l-5-5 6.5-.5L12 2z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 6.5L21 9l-5 5 1.5 7L12 17.5 6.5 21 8 14l-5-5 6.5-.5L12 2z"/></svg>
               </div>
               <div class="booking-card-name" data-en="Hair + Beard Combo">Haar + Baard</div>
               <div class="booking-card-meta">
@@ -123,7 +121,7 @@
 
             <button type="button" class="booking-card" data-service="scheren" data-name-nl="Klassiek Scheren" data-name-en="Classic Shave" data-price="30" data-duration="40">
               <div class="booking-card-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2l8 8-12 12H2v-8L14 2z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2l8 8-12 12H2v-8L14 2z"/></svg>
               </div>
               <div class="booking-card-name" data-en="Classic Shave">Klassiek Scheren</div>
               <div class="booking-card-meta">
@@ -134,7 +132,7 @@
 
             <button type="button" class="booking-card" data-service="kinderknippen" data-name-nl="Kinderknippen" data-name-en="Children's Haircut" data-price="18" data-duration="25">
               <div class="booking-card-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4 4-7 8-7s8 3 8 7"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4 4-7 8-7s8 3 8 7"/></svg>
               </div>
               <div class="booking-card-name" data-en="Children's Haircut">Kinderknippen</div>
               <div class="booking-card-meta">
@@ -145,7 +143,7 @@
 
             <button type="button" class="booking-card" data-service="haarverf" data-name-nl="Haarverf" data-name-en="Hair Coloring" data-price="60" data-duration="90">
               <div class="booking-card-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 5 10 5 14a7 7 0 0014 0c0-4-3-8-7-12z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 5 10 5 14a7 7 0 0014 0c0-4-3-8-7-12z"/></svg>
               </div>
               <div class="booking-card-name" data-en="Hair Coloring">Haarverf</div>
               <div class="booking-card-meta">
@@ -158,27 +156,21 @@
 
         <!-- STEP 2: DATE -->
         <div class="wizard-step" data-step="2">
-          <h2 class="wizard-step-title" data-en="Pick a date">Kies een datum</h2>
-          <p class="wizard-step-desc" data-en="Select your preferred day for the appointment.">Selecteer uw voorkeursdag voor de afspraak.</p>
-
+          <h2 class="bw-step-title" data-en="Pick a date">Kies een datum</h2>
+          <p class="bw-step-desc" data-en="Select your preferred day for the appointment.">Selecteer uw voorkeursdag voor de afspraak.</p>
           <div class="calendar">
             <div class="calendar-header">
-              <button type="button" class="calendar-nav" id="cal-prev" aria-label="Previous">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              <button type="button" class="calendar-nav" id="cal-prev">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
               </button>
               <div class="calendar-month-label" id="cal-month"></div>
-              <button type="button" class="calendar-nav" id="cal-next" aria-label="Next">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              <button type="button" class="calendar-nav" id="cal-next">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
             <div class="calendar-weekdays">
-              <span data-en="Mo">Ma</span>
-              <span data-en="Tu">Di</span>
-              <span data-en="We">Wo</span>
-              <span data-en="Th">Do</span>
-              <span data-en="Fr">Vr</span>
-              <span data-en="Sa">Za</span>
-              <span data-en="Su">Zo</span>
+              <span data-en="Mo">Ma</span><span data-en="Tu">Di</span><span data-en="We">Wo</span>
+              <span data-en="Th">Do</span><span data-en="Fr">Vr</span><span data-en="Sa">Za</span><span data-en="Su">Zo</span>
             </div>
             <div class="calendar-grid" id="cal-grid"></div>
           </div>
@@ -186,9 +178,8 @@
 
         <!-- STEP 3: TIME -->
         <div class="wizard-step" data-step="3">
-          <h2 class="wizard-step-title" data-en="Pick a time">Kies een tijd</h2>
-          <p class="wizard-step-desc" id="time-step-desc" data-en="Available time slots for the selected day.">Beschikbare tijden voor de geselecteerde dag.</p>
-
+          <h2 class="bw-step-title" data-en="Pick a time">Kies een tijd</h2>
+          <p class="bw-step-desc" id="time-step-desc" data-en="Available time slots for the selected day.">Beschikbare tijden voor de geselecteerde dag.</p>
           <div class="time-section">
             <div class="time-section-title" data-en="Morning">Ochtend</div>
             <div class="time-grid" id="time-morning"></div>
@@ -205,9 +196,8 @@
 
         <!-- STEP 4: DETAILS -->
         <div class="wizard-step" data-step="4">
-          <h2 class="wizard-step-title" data-en="Your details">Uw gegevens</h2>
-          <p class="wizard-step-desc" data-en="Please fill in your contact information.">Vul uw contactgegevens in.</p>
-
+          <h2 class="bw-step-title" data-en="Your details">Uw gegevens</h2>
+          <p class="bw-step-desc" data-en="Please fill in your contact information.">Vul uw contactgegevens in.</p>
           <div class="wizard-form">
             <div class="form-group">
               <label for="w-name" data-en="Full Name">Volledige Naam</label>
@@ -230,9 +220,8 @@
 
         <!-- STEP 5: CONFIRM -->
         <div class="wizard-step" data-step="5">
-          <h2 class="wizard-step-title" data-en="Review your booking">Controleer uw boeking</h2>
-          <p class="wizard-step-desc" data-en="Please confirm the details below.">Bevestig de onderstaande gegevens.</p>
-
+          <h2 class="bw-step-title" data-en="Review your booking">Controleer uw boeking</h2>
+          <p class="bw-step-desc" data-en="Please confirm the details below.">Bevestig de onderstaande gegevens.</p>
           <div class="summary-card">
             <div class="summary-row">
               <div class="summary-label" data-en="Service">Dienst</div>
@@ -268,11 +257,11 @@
         <!-- SUCCESS -->
         <div class="wizard-success" id="wizard-success">
           <div class="wizard-success-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <h2 class="wizard-step-title" data-en="Appointment confirmed!">Afspraak bevestigd!</h2>
-          <p class="wizard-step-desc" data-en="We have received your booking. We will contact you shortly to confirm.">Wij hebben uw boeking ontvangen. We nemen binnenkort contact met u op ter bevestiging.</p>
-          <a href="index.html" class="btn btn-primary" style="margin-top:24px;"><span data-en="Back to Home">Terug naar Home</span></a>
+          <h2 class="bw-step-title" data-en="Appointment confirmed!">Afspraak bevestigd!</h2>
+          <p class="bw-step-desc" data-en="We have received your booking. We will contact you shortly to confirm.">Wij hebben uw boeking ontvangen. We nemen binnenkort contact met u op ter bevestiging.</p>
+          <a href="index.html" class="t-btn" style="margin-top:32px;"><span data-en="Back to Home">Terug naar Home</span></a>
         </div>
 
         <!-- WIZARD NAV -->
@@ -296,43 +285,28 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="nav-logo-placeholder" style="width:52px;height:52px;font-size:24px;">[L]</div>
-          <div class="footer-brand-name">[BERBER_ADI]</div>
-          <p class="footer-brand-desc" data-en="Professional hair and beard care. [SEHIR].">Professionele haar- en baardverzorging. [SEHIR].</p>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title" data-en="Pages">Pagina's</div>
-          <a href="index.html" data-en="Home">Home</a>
-          <a href="hizmetler.html" data-en="Services">Onze Diensten</a>
-          <a href="galeri.html" data-en="Gallery">Galerij</a>
-          <a href="randevu.html" data-en="Book Now">Boek Nu</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title" data-en="Services">Diensten</div>
-          <a href="hizmetler.html" data-en="Haircut">Haarknippen</a>
-          <a href="hizmetler.html" data-en="Beard Care">Baardverzorging</a>
-          <a href="hizmetler.html" data-en="Children's Haircut">Kinderknippen</a>
-          <a href="hizmetler.html" data-en="Classic Shave">Klassiek Scheren</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title" data-en="Contact">Contact</div>
-          <a href="#">[ADRES]</a>
-          <a href="tel:[TELEFON]">[TELEFON]</a>
-          <a href="https://wa.me/[WHATSAPP_NO]" target="_blank">WhatsApp</a>
-          <p style="font-size:13px;color:var(--text-secondary);margin-top:12px;">
-            <span data-en="Mon–Sat: 09:00 – 20:00">Ma–Za: 09:00 – 20:00</span><br>
-            <span data-en="Sun: 10:00 – 18:00">Zo: 10:00 – 18:00</span>
-          </p>
-        </div>
+  <footer class="t-footer">
+    <div class="t-footer-top">
+      <a href="mailto:[EMAIL]" class="t-footer-contact">EMAIL</a>
+      <a href="index.html" class="t-footer-logo">
+        <div class="t-logo-icon">[L]</div>
+        <span class="t-logo-name">[BERBER_ADI]</span>
+      </a>
+      <div class="t-footer-social">
+        <a href="#">FB</a>
+        <a href="#">TW</a>
+        <a href="#">IG</a>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 [BERBER_ADI] Barbershop. <span data-en="All rights reserved.">Alle rechten voorbehouden.</span></p>
-        <p>[SEHIR]</p>
-      </div>
+    </div>
+    <div class="t-footer-nav">
+      <a href="index.html" data-en="HOME">HOME</a>
+      <a href="hizmetler.html" data-en="SERVICES">DIENSTEN</a>
+      <a href="galeri.html" data-en="GALLERY">GALERIJ</a>
+      <a href="randevu.html" data-en="CONTACT">CONTACT</a>
+    </div>
+    <div class="t-footer-bottom">
+      <p>&copy; 2025 [BERBER_ADI] Barbershop. <span data-en="All rights reserved.">Alle rechten voorbehouden.</span></p>
+      <p>[SEHIR]</p>
     </div>
   </footer>
 
