@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navbar?.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ---- Hamburger menu ----
+  // ---- Hamburger menu (old dark theme) ----
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
 
@@ -24,6 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger?.classList.remove('open');
       mobileMenu?.classList.remove('open');
     });
+  });
+
+  // ---- Trimva mobile menu ----
+  const tMenuBtn = document.getElementById('t-menu-btn');
+  const tMobileMenu = document.getElementById('t-mobile-menu');
+  const tMobileClose = document.getElementById('t-mobile-close');
+
+  tMenuBtn?.addEventListener('click', () => tMobileMenu?.classList.add('open'));
+  tMobileClose?.addEventListener('click', () => tMobileMenu?.classList.remove('open'));
+  document.querySelectorAll('.t-mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => tMobileMenu?.classList.remove('open'));
   });
 
   // ---- Active nav link ----
