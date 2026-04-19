@@ -2643,8 +2643,8 @@ body.t-body::after {
 
 /* ---- BOOKING SERVICE LIST ---- */
 .booking-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 
@@ -3328,3 +3328,19 @@ body.t-body::after {
   .booking-row { grid-template-columns: 1fr; }
   .admin-filters { flex-wrap: wrap; }
 }
+
+/* Override old dark admin styles for new beige admin */
+.a-body .booking-row {
+  background: rgba(17,17,17,0.03);
+  border: 1px solid rgba(17,17,17,0.12);
+  color: #111;
+  transition: background 0.15s;
+}
+
+.a-body .booking-row:hover { background: rgba(17,17,17,0.07); border-color: rgba(17,17,17,0.2); }
+.a-body .booking-row-name { color: #111; font-weight: 700; }
+.a-body .booking-row-phone { color: rgba(17,17,17,0.5); }
+.a-body .booking-row-service { color: #111; }
+.a-body .booking-row-price { color: rgba(17,17,17,0.55); font-weight: 400; }
+.a-body .booking-row-datetime { color: #111; }
+.a-body .booking-row-time { color: rgba(17,17,17,0.5); }
